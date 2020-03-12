@@ -26,6 +26,9 @@ class AbstractRewardScrapper(ABC):
         """
         raise NotImplementedError
 
+    def _is_blank_row(self, row):
+        return row.select('.blank-row')
+
 
 class MissionRewardScrapper(AbstractRewardScrapper):
     @property
@@ -68,9 +71,6 @@ class MissionRewardScrapper(AbstractRewardScrapper):
         if self._is_blank_row(row):
             return True
         return False
-
-    def _is_blank_row(self, row):
-        return row.select('.blank-row')
 
     def _set_reward_details(self, row):
         """
