@@ -1,0 +1,5 @@
+<tr><td>Hell's Chamber</td><td>Rare (6.67%)</td></tr>
+<tr><td>Emergent Aftermath</td><td>Rare (2.48%)</td></tr>
+<tr><td>400X Alloy Plate</td><td>Uncommon (12.65%)</td></tr>
+<tr><td>Orokin Cell</td><td>Legendary (0.25%)</td></tr>
+<tr><td>2,000 Credits Cache</td><td>Common (50.00%)</td></tr>

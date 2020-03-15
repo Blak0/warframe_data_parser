@@ -1,0 +1,9 @@
+<th colspan="2">Mercury/Apollodorus (Survival)</th>
+<th colspan="2">Mercury/Lares (Defense)</th>
+<th colspan="2">Mercury/Caloris (Rescue)</th>
+<th colspan="2">Saturn/Team Annihilation (Conclave)</th>
+<th colspan="2">Saturn/Cephalon Capture (Conclave) Extra</th>
+<th colspan="2">Jupiter/The Ropalolyst (Assassination)</th>
+<th colspan="2">Jupiter/Carpo (Caches)</th>
+<th colspan="2">Saturn/Cephalon Capture (Conclave)</th>
+<th colspan="2">Saturn/Team Annihilation (Conclave)</th>
