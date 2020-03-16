@@ -1,20 +1,11 @@
-from abc import ABC, abstractmethod
-
 from . import rows
-from .rewards import Reward
+from .entities import MissionReward, RelicReward
 
 
-class AbstractRowParser(ABC):
+class RowParser:
     def __init__(self, rows_list):
         self.rows = rows_list
 
-    @abstractmethod
-    def get_results(self):
-        """
-        Abstract operation resulting in an array of some kind of rewards
-        """
-
-class MissionRowParser(AbstractRowParser):
     def get_results_generator(self):
         for row in self.rows:
             reward = self._scrap_reward_from_row(row)
@@ -32,7 +23,8 @@ class MissionRowParser(AbstractRowParser):
         reward = row_class(row_markup).accept(self)
         return reward
 
-    # visitor methods for particular row objects
+
+class MissionRowParser(RowParser):
     def do_for_mission_signature(self, planet, name, mission_type):
         self.planet = planet
         self.mission_name = name
@@ -43,8 +35,8 @@ class MissionRowParser(AbstractRowParser):
         self.rarity = rarity_type
         self.percentage = percentage
 
-        return Reward(
-            name=self.item_name,
+        return MissionReward(
+            reward_name=self.item_name,
             rotation=self.rotation,
             mission_name=self.mission_name,
             rarity_type=self.rarity,
@@ -55,3 +47,24 @@ class MissionRowParser(AbstractRowParser):
 
     def do_for_rotation(self, rotation):
         self.rotation = rotation
+
+
+class RelicRowParser(RowParser):
+    def do_for_relic_signature(self, kind, name, refinement):
+        self.relic_type = kind
+        self.relic_name = name
+        self.refinement = refinement
+
+    def do_for_item(self, name, rarity_type, percentage):
+        self.item_name = name
+        self.rarity = rarity_type
+        self.percentage = percentage
+
+        return RelicReward(
+            relic_type=self.relic_type,
+            relic_name=self.relic_name,
+            relic_refinement=self.refinement,
+            reward_name=self.item_name,
+            rarity_type=self.rarity,
+            percentage=self.percentage,
+        )

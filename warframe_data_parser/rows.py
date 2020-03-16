@@ -2,8 +2,15 @@ import re
 from abc import ABC, abstractmethod
 
 
+row_classes_prefixes = [
+    'MissionSignature',
+    'RelicSignature',
+    'Rotation',
+    'Item',
+]
+
+
 def get_row_class_from_markup(markup):
-    row_classes_prefixes = ['MissionSignature', 'Rotation', 'Item']
     for prefix in row_classes_prefixes:
         row_class = globals()[f'{prefix}Row']
         if row_class(markup).does_markup_fit():
@@ -14,7 +21,7 @@ def get_row_class_from_markup(markup):
 class Row(ABC):
     def __init__(self, markup):
         self.markup = markup
-        
+
     @abstractmethod
     def get_data(self):
         """
@@ -49,9 +56,25 @@ class MissionSignatureRow(Row):
         pattern = rf'{planet}/{name} {kind}'
 
         return self.parse(pattern)
-    
+
     def accept(self, parser):
         return parser.do_for_mission_signature(*self.get_data())
+
+
+class RelicSignatureRow(Row):
+    def get_data(self):
+        """
+        "(...) Axi A1 Relic (Intact) (...)" -> ("Axi", "A1", "Intact")
+        """
+        kind = r'([a-zA-Z]+)'
+        name = r'(\D\d)'
+        refinement = r'(\D+)'
+        pattern = rf'{kind} {name} Relic \({refinement}\)'
+
+        return self.parse(pattern)
+
+    def accept(self, parser):
+        return parser.do_for_relic_signature(*self.get_data())
 
 
 class RotationRow(Row):
@@ -81,6 +104,7 @@ class ItemRow(Row):
 
     def accept(self, parser):
         return parser.do_for_item(*self.get_data())
+
 
 class NoneRow(Row):
     def get_data(self):

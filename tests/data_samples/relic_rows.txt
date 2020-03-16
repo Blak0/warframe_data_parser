@@ -1,0 +1,5 @@
+<tr><th colspan="2">Lith A1 Relic (Intact)</th></tr>
+<tr><th colspan="2">Meso B2 Relic (Radiant)</th></tr>
+<tr><th colspan="2">Meso R4 Relic (Flawless)(</th></tr>
+<tr><th colspan="2">Neo B1 Relic (Intact)</th></tr>
+<tr><th colspan="2">Axi G8 Relic (Intact)</th></tr>

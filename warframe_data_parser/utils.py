@@ -21,7 +21,7 @@ def get_drop_html(file_name='drop.html'):
 
 
 def fetch_html_from_repo(drop_repo=DROP_REPO):
-    return get(url=drop_repo)
+    return get(url=drop_repo).text
 
 
 def fetch_html_from_file(file_name):

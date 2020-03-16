@@ -35,11 +35,13 @@ class TestGetDropHtml(unittest.TestCase):
 
 
 class FetchHtmlFromRepo(unittest.TestCase):
-    @patch(f'{module}.get', return_value='content from get')
+    @patch(f'{module}.get')
     def test_get_right_params(self, mock_get):
+        mock_get().text = 'Data from repo'
+        mock_get.reset_mock()
         result = utils.fetch_html_from_repo()
-        mock_get.assert_called_once()
-        self.assertEqual(result, mock_get())
+        mock_get.assert_called()
+        self.assertEqual(result, 'Data from repo')
 
         custom_repo = 'https://www.customrepository.com/'
         result = utils.fetch_html_from_repo(custom_repo)

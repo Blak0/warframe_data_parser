@@ -1,11 +1,11 @@
 import unittest
 
-from warframe_data_parser import rewards
+from warframe_data_parser import entities
 
 
-class TestReward(unittest.TestCase):
+class TestMissionReward(unittest.TestCase):
     def setUp(self):
-        self.reward = rewards.Reward(
+        self.reward = entities.MissionReward(
             'Item name',
             'Rotation',
             'Mission name',
