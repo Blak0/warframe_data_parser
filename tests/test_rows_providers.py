@@ -18,12 +18,13 @@ class TestRowProviders(unittest.TestCase):
 
     @patch('warframe_data_parser.rows_providers.utils')
     def test_get_mission_rows(self, mock_utils):
-        mock_utils.get_drop_html.return_value = read_test_table('mission')
+        mock_utils.fetch_html_from_repo.return_value = read_test_table(
+            'mission')
         row_provider = rp.MissionRowsProvider()
         self.check_output(row_provider)
 
     @patch('warframe_data_parser.rows_providers.utils')
     def test_get_relic_rows(self, mock_utils):
-        mock_utils.get_drop_html.return_value = read_test_table('relic')
+        mock_utils.fetch_html_from_repo.return_value = read_test_table('relic')
         row_provider = rp.RelicRowsProvider()
         self.check_output(row_provider)

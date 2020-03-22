@@ -5,7 +5,7 @@ from . import utils
 from bs4 import BeautifulSoup
 
 
-soup = BeautifulSoup(utils.get_drop_html(), 'lxml')
+soup = BeautifulSoup(utils.fetch_html_from_repo(), 'lxml')
 
 
 class BaseRowsProvider(ABC):
