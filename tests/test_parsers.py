@@ -1,8 +1,21 @@
 import unittest
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 
-from warframe_data_parser.parsers import MissionRowParser, RelicRowParser
-from warframe_data_parser.entities import MissionReward, RelicReward
+from warframe_data_parser import exceptions, parsers
+
+
+class TestGetParserClass(unittest.TestCase):
+    def test_raises_exception(self):
+        with self.assertRaises(exceptions.ParserNotFoundError):
+            parsers.get_parser_class('nonexistent')
+
+    def test_get_mission_class(self):
+        parser_class = parsers.get_parser_class('mission')
+        self.assertIs(parser_class, parsers.MissionRowParser)
+
+    def test_get_relic_class(self):
+        parser_class = parsers.get_parser_class('relic')
+        self.assertIs(parser_class, parsers.RelicRowParser)
 
 
 class TestMissionRowParser(unittest.TestCase):
@@ -13,22 +26,19 @@ class TestMissionRowParser(unittest.TestCase):
             "<tr><td>Hell's Chamber</td><td>Rare (6.67%)</td></tr>",
             "<td>400X Alloy Plate</td><td>Uncommon (12.65%)</td>",
         ]
+        row_parser = parsers.MissionRowParser()
 
-        # Assert if reward is constructed in the process
-        row_parser = MissionRowParser(test_rows)
-        with patch.object(MissionReward, '__init__', return_value=None) as mock_constructor:
+        with patch.object(row_parser, '_get_rows_from_provider', return_value=test_rows):
             rewards = row_parser.get_results()
-            mock_constructor.assert_called()
+            self.assertEqual(len(rewards), 2)
 
-        # Assert if there are two rewards
-        rewards = row_parser.get_results()
-        self.assertEqual(len(rewards), 2)
+            first, second = rewards
+            self.assertIsInstance(first, parsers.MissionReward)
+            self.assertIsInstance(second, parsers.MissionReward)
 
-        #Assert if it returns Reward objects
-        first, second = rewards
-        
-        self.assertIsInstance(first, MissionReward)
-        self.assertIsInstance(second, MissionReward)
+    def test_has_proper_provider(self):
+        row_parser = parsers.MissionRowParser()
+        assert hasattr(row_parser._get_rows_provider(), 'get_rows')
 
 
 class TestRelicRowParser(unittest.TestCase):
@@ -40,16 +50,16 @@ class TestRelicRowParser(unittest.TestCase):
             '<tr><td>Soma Prime Blueprint</td><td>Uncommon (13.00%)</td></tr>',
             '<tr><td>Dakra Prime Blueprint</td><td>Uncommon (13.00%)</td></tr>',
         ]
-        
-        row_parser = RelicRowParser(test_rows)
-        with patch.object(RelicReward, '__init__', return_value=None) as mock_constructor:
-                rewards = row_parser.get_results()
-                mock_constructor.assert_called()
 
-        rewards = row_parser.get_results()
+        row_parser = parsers.RelicRowParser()
 
-        for reward in rewards:
-            self.assertIsInstance(reward, RelicReward)
+        with patch.object(row_parser, '_get_rows_from_provider', return_value=test_rows):
+            rewards = row_parser.get_results()
+            for reward in rewards:
+                self.assertIsInstance(reward, parsers.RelicReward)
 
         self.assertEqual(len(rewards), 4)
 
+    def test_has_proper_provider(self):
+        row_parser = parsers.RelicRowParser()
+        assert hasattr(row_parser._get_rows_provider(), 'get_rows')

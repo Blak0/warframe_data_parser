@@ -1,0 +1,183 @@
+<h3 id="relicRewards">Relics:</h3>
+<table>
+    <tr>
+        <th colspan="2">Axi A1 Relic (Intact)</th>
+    </tr>
+    <tr>
+        <td>Akstiletto Prime Barrel</td>
+        <td>Uncommon (11.00%)</td>
+    </tr>
+    <tr>
+        <td>Trinity Prime Systems Blueprint</td>
+        <td>Uncommon (25.33%)</td>
+    </tr>
+    <tr>
+        <td>Fragor Prime Head</td>
+        <td>Uncommon (25.33%)</td>
+    </tr>
+    <tr>
+        <td>Dual Kamas Prime Handle</td>
+        <td>Uncommon (11.00%)</td>
+    </tr>
+    <tr>
+        <td>Braton Prime Stock</td>
+        <td>Uncommon (25.33%)</td>
+    </tr>
+    <tr>
+        <td>Nikana Prime Blueprint</td>
+        <td>Rare (2.00%)</td>
+    </tr>
+    <tr class="blank-row">
+        <td class="blank-row" colspan="2"></td>
+    </tr>
+    <tr>
+        <th colspan="2">Axi A1 Relic (Exceptional)</th>
+    </tr>
+    <tr>
+        <td>Akstiletto Prime Barrel</td>
+        <td>Uncommon (13.00%)</td>
+    </tr>
+    <tr>
+        <td>Trinity Prime Systems Blueprint</td>
+        <td>Uncommon (23.33%)</td>
+    </tr>
+    <tr>
+        <td>Fragor Prime Head</td>
+        <td>Uncommon (23.33%)</td>
+    </tr>
+    <tr>
+        <td>Dual Kamas Prime Handle</td>
+        <td>Uncommon (13.00%)</td>
+    </tr>
+    <tr>
+        <td>Braton Prime Stock</td>
+        <td>Uncommon (23.33%)</td>
+    </tr>
+    <tr>
+        <td>Nikana Prime Blueprint</td>
+        <td>Rare (4.00%)</td>
+    </tr>
+    <tr class="blank-row">
+        <td class="blank-row" colspan="2"></td>
+    </tr>
+    <tr>
+        <th colspan="2">Axi A1 Relic (Flawless)</th>
+    </tr>
+    <tr>
+        <td>Akstiletto Prime Barrel</td>
+        <td>Uncommon (17.00%)</td>
+    </tr>
+    <tr>
+        <td>Trinity Prime Systems Blueprint</td>
+        <td>Uncommon (20.00%)</td>
+    </tr>
+    <tr>
+        <td>Fragor Prime Head</td>
+        <td>Uncommon (20.00%)</td>
+    </tr>
+    <tr>
+        <td>Dual Kamas Prime Handle</td>
+        <td>Uncommon (17.00%)</td>
+    </tr>
+    <tr>
+        <td>Braton Prime Stock</td>
+        <td>Uncommon (20.00%)</td>
+    </tr>
+    <tr>
+        <td>Nikana Prime Blueprint</td>
+        <td>Rare (6.00%)</td>
+    </tr>
+    <tr class="blank-row">
+        <td class="blank-row" colspan="2"></td>
+    </tr>
+    <tr>
+        <th colspan="2">Axi A1 Relic (Radiant)</th>
+    </tr>
+    <tr>
+        <td>Akstiletto Prime Barrel</td>
+        <td>Uncommon (20.00%)</td>
+    </tr>
+    <tr>
+        <td>Trinity Prime Systems Blueprint</td>
+        <td>Uncommon (16.67%)</td>
+    </tr>
+    <tr>
+        <td>Fragor Prime Head</td>
+        <td>Uncommon (16.67%)</td>
+    </tr>
+    <tr>
+        <td>Dual Kamas Prime Handle</td>
+        <td>Uncommon (20.00%)</td>
+    </tr>
+    <tr>
+        <td>Braton Prime Stock</td>
+        <td>Uncommon (16.67%)</td>
+    </tr>
+    <tr>
+        <td>Nikana Prime Blueprint</td>
+        <td>Uncommon (10.00%)</td>
+    </tr>
+    <tr class="blank-row">
+        <td class="blank-row" colspan="2"></td>
+    </tr>
+    <tr>
+        <th colspan="2">Axi A2 Relic (Intact)</th>
+    </tr>
+    <tr>
+        <td>Aklex Prime Link</td>
+        <td>Rare (2.00%)</td>
+    </tr>
+    <tr>
+        <td>Aklex Prime Blueprint</td>
+        <td>Uncommon (11.00%)</td>
+    </tr>
+    <tr>
+        <td>Lex Prime Blueprint</td>
+        <td>Uncommon (11.00%)</td>
+    </tr>
+    <tr>
+        <td>Lex Prime Receiver</td>
+        <td>Uncommon (25.33%)</td>
+    </tr>
+    <tr>
+        <td>Forma Blueprint</td>
+        <td>Uncommon (25.33%)</td>
+    </tr>
+    <tr>
+        <td>Lex Prime Barrel</td>
+        <td>Uncommon (25.33%)</td>
+    </tr>
+    <tr class="blank-row">
+        <td class="blank-row" colspan="2"></td>
+    </tr>
+    <tr>
+        <th colspan="2">Axi A2 Relic (Exceptional)</th>
+    </tr>
+    <tr>
+        <td>Aklex Prime Link</td>
+        <td>Rare (4.00%)</td>
+    </tr>
+    <tr>
+        <td>Aklex Prime Blueprint</td>
+        <td>Uncommon (13.00%)</td>
+    </tr>
+    <tr>
+        <td>Lex Prime Blueprint</td>
+        <td>Uncommon (13.00%)</td>
+    </tr>
+    <tr>
+        <td>Lex Prime Receiver</td>
+        <td>Uncommon (23.33%)</td>
+    </tr>
+    <tr>
+        <td>Forma Blueprint</td>
+        <td>Uncommon (23.33%)</td>
+    </tr>
+    <tr>
+        <td>Lex Prime Barrel</td>
+        <td>Uncommon (23.33%)</td>
+    </tr>
+    <tr class="blank-row">
+        <td class="blank-row" colspan="2"></td>
+    </tr>
+</table>

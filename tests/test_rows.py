@@ -4,7 +4,7 @@ from warframe_data_parser import rows
 
 
 def generate_data_samples(type):
-    with open(f'tests/data_samples/{type}_rows.txt', 'r') as f:
+    with open(f'tests/data_samples/rows/{type}_rows.txt', 'r') as f:
         for line in f.readlines():
             yield line
 
