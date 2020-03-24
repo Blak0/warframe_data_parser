@@ -20,8 +20,7 @@ class FetchHtmlFromRepo(unittest.TestCase):
         mock_get.assert_called_once()
 
         self.assertEqual(result, 'Data from repo')
-        
-    
+
     @patch(f'{module}.get')
     def test_default_url(self, mock_get):
         custom_repo = 'https://www.customrepository.com/'
