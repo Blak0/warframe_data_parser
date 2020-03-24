@@ -1,12 +1,12 @@
 from abc import ABC, abstractmethod
 
-from .soup import soup
+from .soup import get_row_strings_from_table_id
 
 
 class BaseRowsProvider(ABC):
-    def _get_rows_from_id(self, table_id):
-        row_tags = soup.select(f'#{table_id} + table > tr')
-        return [str(x) for x in row_tags]
+    def _get_row_strings_from_id(self, table_id):
+        return get_row_strings_from_table_id(table_id)
+        
 
     @abstractmethod
     def get_rows(self):
@@ -15,9 +15,9 @@ class BaseRowsProvider(ABC):
 
 class MissionRowsProvider(BaseRowsProvider):
     def get_rows(self):
-        return self._get_rows_from_id('missionRewards')
+        return self._get_row_strings_from_id('missionRewards')
 
 
 class RelicRowsProvider(BaseRowsProvider):
     def get_rows(self):
-        return self._get_rows_from_id('relicRewards')
+        return self._get_row_strings_from_id('relicRewards')
