@@ -16,14 +16,14 @@ class TestRowProviders(unittest.TestCase):
         self.assertIs(type(rows[0]), str)
         self.assertIs(type(rows), list)
 
-    @patch('warframe_data_parser.rows_providers.utils')
+    @patch('warframe_data_parser.soup.utils')
     def test_get_mission_rows(self, mock_utils):
         mock_utils.fetch_html_from_repo.return_value = read_test_table(
             'mission')
         row_provider = rp.MissionRowsProvider()
         self.check_output(row_provider)
 
-    @patch('warframe_data_parser.rows_providers.utils')
+    @patch('warframe_data_parser.soup.utils')
     def test_get_relic_rows(self, mock_utils):
         mock_utils.fetch_html_from_repo.return_value = read_test_table('relic')
         row_provider = rp.RelicRowsProvider()

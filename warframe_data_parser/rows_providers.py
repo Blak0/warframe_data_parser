@@ -1,11 +1,6 @@
 from abc import ABC, abstractmethod
 
-from . import utils
-
-from bs4 import BeautifulSoup
-
-
-soup = BeautifulSoup(utils.fetch_html_from_repo(), 'lxml')
+from .soup import soup
 
 
 class BaseRowsProvider(ABC):
