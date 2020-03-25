@@ -16,10 +16,14 @@ def get_parser_class(parser_type):
 class RowParser(ABC):
     @abstractmethod
     def _get_rows_provider(self):
-        """Factory method: should return row provider instance"""
+        """
+        Factory method: should return proper row provider instance
+        Defaults to null object to ensure proper creation of base class
+        """
+        return rows_providers.NoneRowsProvider()
 
     def _get_rows_from_provider(self):
-        return self._get_rows_provider.get_rows()
+        return self._get_rows_provider().get_rows()
 
     def get_results_generator(self):
         for row in self._get_rows_from_provider():

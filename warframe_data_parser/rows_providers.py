@@ -20,3 +20,7 @@ class MissionRowsProvider(BaseRowsProvider):
 class RelicRowsProvider(BaseRowsProvider):
     def get_rows(self):
         return self._get_row_strings_from_id('relicRewards')
+
+class NoneRowsProvider(BaseRowsProvider):
+    def get_rows(self):
+        """This null object can only represent its interface for template method in baseclass"""
