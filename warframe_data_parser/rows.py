@@ -29,9 +29,13 @@ class Row(ABC):
         """
 
     @abstractmethod
-    def accept(self, parser):
+    def accept_parser(self, parser):
         """
-        Accept a visitor and dispatch the proper method for it
+        Accept visiting parser and dispatch the proper method for it
+        
+        NOTE:
+        It should return from the method of the parser, because it may
+        return reward and user will expect the Row subclass to pass it further.
         """
 
     def does_markup_fit(self):
@@ -57,7 +61,7 @@ class MissionSignatureRow(Row):
 
         return self.parse(pattern)
 
-    def accept(self, parser):
+    def accept_parser(self, parser):
         return parser.do_for_mission_signature(*self.get_data())
 
 
@@ -73,7 +77,7 @@ class RelicSignatureRow(Row):
 
         return self.parse(pattern)
 
-    def accept(self, parser):
+    def accept_parser(self, parser):
         return parser.do_for_relic_signature(*self.get_data())
 
 
@@ -86,7 +90,7 @@ class RotationRow(Row):
 
         return self.parse(pattern)
 
-    def accept(self, parser):
+    def accept_parser(self, parser):
         return parser.do_for_rotation(*self.get_data())
 
 
@@ -102,7 +106,7 @@ class ItemRow(Row):
 
         return self.parse(pattern)
 
-    def accept(self, parser):
+    def accept_parser(self, parser):
         return parser.do_for_item(*self.get_data())
 
 
@@ -112,7 +116,7 @@ class NoneRow(Row):
         Results in nothing since this class represents insignificant row.
         """
 
-    def accept(self, parser):
+    def accept_parser(self, parser):
         """
         No action is desirable if row is not recognised as useful.
         """

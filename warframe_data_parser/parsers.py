@@ -35,7 +35,7 @@ class RowParser(ABC):
 
     def _scrap_reward_from_row(self, row_markup):
         row_class = rows.get_row_class_from_markup(row_markup)
-        reward = row_class(row_markup).accept(self)
+        reward = row_class(row_markup).accept_parser(self)
         return reward
 
 
