@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from . import exceptions, rows, rows_providers
+from . import exceptions, rows, soup
 from .entities import MissionReward, RelicReward
 
 
@@ -15,15 +15,11 @@ def get_parser_class(parser_type):
 
 class RowParser(ABC):
     @abstractmethod
-    def _get_rows_provider(self):
-        """
-        Factory method: should return proper row provider instance
-        Defaults to null object to ensure proper creation of base class
-        """
-        return rows_providers.NoneRowsProvider()
-
     def _get_rows_from_provider(self):
-        return self._get_rows_provider().get_rows()
+        """
+        Should return list of row strings from picked callable.
+        See soup.Soup
+        """
 
     def get_results_generator(self):
         for row in self._get_rows_from_provider():
@@ -44,8 +40,8 @@ class RowParser(ABC):
 
 
 class MissionRowParser(RowParser):
-    def _get_rows_provider(self):
-        return rows_providers.MissionRowsProvider()
+    def _get_rows_from_provider(self):
+        return soup.Soup().get_mission_rows_strings()
 
     def do_for_mission_signature(self, planet, name, mission_type):
         self.planet = planet
@@ -53,7 +49,7 @@ class MissionRowParser(RowParser):
         self.mission_type = mission_type
 
     def do_for_item(self, name, rarity_type, percentage):
-        self.item_name = name
+        self.item_name = name                                              
         self.rarity = rarity_type
         self.percentage = percentage
 
@@ -72,8 +68,8 @@ class MissionRowParser(RowParser):
 
 
 class RelicRowParser(RowParser):
-    def _get_rows_provider(self):
-        return rows_providers.RelicRowsProvider()
+    def _get_rows_from_provider(self):
+        return soup.Soup().get_relic_rows_strings()
 
     def do_for_relic_signature(self, kind, name, refinement):
         self.relic_type = kind

@@ -32,13 +32,9 @@ class TestMissionRowParser(unittest.TestCase):
             rewards = row_parser.get_results()
             self.assertEqual(len(rewards), 2)
 
-            first, second = rewards
+            first, second, *_ = rewards
             self.assertIsInstance(first, parsers.MissionReward)
             self.assertIsInstance(second, parsers.MissionReward)
-
-    def test_has_proper_provider(self):
-        row_parser = parsers.MissionRowParser()
-        assert hasattr(row_parser._get_rows_provider(), 'get_rows')
 
 
 class TestRelicRowParser(unittest.TestCase):
@@ -59,7 +55,3 @@ class TestRelicRowParser(unittest.TestCase):
                 self.assertIsInstance(reward, parsers.RelicReward)
 
         self.assertEqual(len(rewards), 4)
-
-    def test_has_proper_provider(self):
-        row_parser = parsers.RelicRowParser()
-        assert hasattr(row_parser._get_rows_provider(), 'get_rows')
