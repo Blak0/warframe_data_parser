@@ -19,26 +19,30 @@ class TestGetParserClass(unittest.TestCase):
 
 
 class TestMissionRowParser(unittest.TestCase):
-    def test_get_results(self):
+    @patch('warframe_data_parser.parsers.soup.Soup')
+    def test_get_results(self, mock_soup):
         test_rows = [
             '<th colspan="2">Mercury/Apollodorus (Survival)</th>',
             '<th colspan="2">Rotation A<th>',
             "<tr><td>Hell's Chamber</td><td>Rare (6.67%)</td></tr>",
             "<td>400X Alloy Plate</td><td>Uncommon (12.65%)</td>",
         ]
+        mock_soup().get_mission_rows_strings.return_value = test_rows
+
         row_parser = parsers.MissionRowParser()
+        rewards = row_parser.get_results()
 
-        with patch.object(row_parser, '_get_rows_from_provider', return_value=test_rows):
-            rewards = row_parser.get_results()
-            self.assertEqual(len(rewards), 2)
+        self.assertEqual(len(rewards), 2)
 
-            first, second, *_ = rewards
-            self.assertIsInstance(first, parsers.MissionReward)
-            self.assertIsInstance(second, parsers.MissionReward)
+        first, second, *_ = rewards
+
+        self.assertIsInstance(first, parsers.MissionReward)
+        self.assertIsInstance(second, parsers.MissionReward)
 
 
 class TestRelicRowParser(unittest.TestCase):
-    def test_get_results(self):
+    @patch('warframe_data_parser.parsers.soup.Soup')
+    def test_get_results(self, mock_soup):
         test_rows = [
             '<tr><th colspan="2">Lith M1 Relic (Exceptional)</th></tr>',
             '<tr><td>Mag Prime Blueprint</td><td>Rare (4.00%)</td></tr>',
@@ -46,12 +50,11 @@ class TestRelicRowParser(unittest.TestCase):
             '<tr><td>Soma Prime Blueprint</td><td>Uncommon (13.00%)</td></tr>',
             '<tr><td>Dakra Prime Blueprint</td><td>Uncommon (13.00%)</td></tr>',
         ]
+        mock_soup().get_relic_rows_strings.return_value = test_rows
 
         row_parser = parsers.RelicRowParser()
+        rewards = row_parser.get_results()
 
-        with patch.object(row_parser, '_get_rows_from_provider', return_value=test_rows):
-            rewards = row_parser.get_results()
-            for reward in rewards:
-                self.assertIsInstance(reward, parsers.RelicReward)
-
+        for reward in rewards:
+            self.assertIsInstance(reward, parsers.RelicReward)
         self.assertEqual(len(rewards), 4)
