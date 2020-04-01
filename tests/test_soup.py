@@ -17,7 +17,7 @@ class TestSoup(unittest.TestCase):
         s1.set_markup('markup')
         s2 = Soup()
         s2.set_markup('new markup')
-        self.assertIs(s1.soup, s2.soup)
+        self.assertIs(s1._soup, s2._soup)
 
     def returns_row_lists(self, func):
         rows = func()

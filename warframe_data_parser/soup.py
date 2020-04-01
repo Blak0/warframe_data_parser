@@ -14,12 +14,12 @@ class Borg:
 
 class Soup(Borg):
     def get_rows_strings_from_table_id(self, css_id):
-        rows = self.soup.select(f'#{css_id} + table > tr')
+        rows = self._soup.select(f'#{css_id} + table > tr')
         return [str(row) for row in rows]
 
     def set_markup(self, source_string):
         markup = source_string or utils.fetch_html_from_repo()
-        self.soup = BeautifulSoup(markup, 'lxml')
+        self._soup = BeautifulSoup(markup, 'lxml')
 
     get_mission_rows_strings = partialmethod(
         get_rows_strings_from_table_id,
